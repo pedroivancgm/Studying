@@ -1,0 +1,40 @@
+// Idea: 
+// Locate the index of the number in a word
+// Use the number  found  as a key in an object and the word as the value
+// Use a for loop to reassemble the sentence using the keys in the correct order
+
+function order(words){
+//   Checks for empty strings
+  if (!words){
+    return String("")
+  };
+  
+  
+  let priorityDic = {};
+  let wordList = words.split(" ");
+
+//   Iterates on every word
+  for (let indexOfWord = 0; indexOfWord < wordList.length; indexOfWord++){
+    let currentWord = wordList[indexOfWord];
+// Iterates on every character of currentword
+    for (let indexOfChar = 0; indexOfChar < currentWord.length ; indexOfChar++){
+      let char = currentWord[indexOfChar];
+      
+//       Checks if char is NOT Not A Number, so essentialy it checks for numbers
+      if (!isNaN(char)){
+
+        priorityDic[char] = currentWord;
+      };
+    };
+  };
+
+  let reassembledSentence = ""
+  for (let i = 1; i <= wordList.length;i++){
+    reassembledSentence += priorityDic[i] + " "
+  };
+
+  
+  return reassembledSentence.trim();
+}
+
+console.log(order(""))

@@ -1,0 +1,18 @@
+function tribonacci(signature,n){
+  let sequence = [...signature];
+
+  // For loop that pushes the sum of the last 3 numbers from the list as a new element at the end;
+  for (let i = 2; sequence.length < n; i++){
+    let sumLastThree = sequence[i] + sequence[i-1] + sequence[i-2];
+    sequence.push(sumLastThree);
+    console.log(i);
+  }
+  
+  // Removes all the elements until only the first n ammount is left in the array
+  for (let i = (sequence.length) - 1; i>=n; i--){
+    sequence.pop()
+  }
+  return sequence
+}
+
+console.log(tribonacci([3,2,1],10))
