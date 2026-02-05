@@ -1,0 +1,47 @@
+function rgb(r, g, b) {
+  let hexR = decToHex(r);
+  let hexG = decToHex(g);
+  let hexB = decToHex(b);
+  
+  let hexCode = hexR + hexG + hexB;
+    return hexCode;
+};
+
+function decToHex(n){
+  if (n <= 0){
+    return "00";
+  } else if(n > 255){
+    n = 255;
+  };
+
+  let objHex = {
+    0:"0",1:"1",2:"2",3:"3",4:"4",5:"5",6:"6",7:"7",8:"8",9:"9",10:"A",11:"B",12:"C",13:"D",14:"E", 15:"F"
+  };
+  let arrayNumbers = [];
+  let strConverted = "";
+
+  for(let i=0 ; i < n ;){
+    let remainder = n % 16
+    arrayNumbers.push(remainder);
+
+    n = Math.floor(n/16);
+
+  };
+
+  for(let i = arrayNumbers.length - 1; i >= 0; i--){
+    let currentNumber = arrayNumbers[i]
+    let hexValue = objHex[currentNumber]
+    strConverted += hexValue
+  };
+  
+  if (strConverted.length < 2){
+    for (i = 0 ; i < strConverted.length; i++){
+      strConverted = "0" + strConverted
+      return strConverted;
+    };
+  };
+
+  return strConverted;
+};
+
+console.log(decToHex(1));
